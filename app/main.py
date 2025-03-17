@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
 
-from app.api import midi, notes
+from app.api import midi, notes, track
 from config.origins import origins
 
 title = "Basic Pitch"
@@ -16,8 +16,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(midi.router, prefix="/midi", tags=["midi"])
-app.include_router(tabulature.router, prefix="/tabulature", tags=["tabulature"])
+app.include_router(midi.router)
+app.include_router(notes.router)
+app.include_router(track.router)
 
 if __name__ == "__main__":
     import uvicorn

@@ -1,8 +1,7 @@
 import os
 import shutil
 
-from generator.utils.basic_pitch_process import basic_pitch
-from generator.utils.clean_midi import clean_midi
+from utils.basic_pitch_process import basic_pitch
 from constants.paths import MIDI_PATH
 
 

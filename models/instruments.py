@@ -1,5 +1,5 @@
 from sqlalchemy import event, Column, Integer, String
-from models.db import engine, Base
+from models.db import engine, Base, SessionLocal
 
 
 class Instrument(Base):
@@ -7,6 +7,22 @@ class Instrument(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, unique=True, index=True)
+
+    @staticmethod
+    def get_by_name(name):
+        db = SessionLocal()
+        try:
+            return db.query(Instrument).filter(Instrument.name == name).first()
+        finally:
+            db.close()
+
+    @staticmethod
+    def get_by_id(id):
+        db = SessionLocal()
+        try:
+            return db.query(Instrument).filter(Instrument.id == id).first()
+        finally:
+            db.close()
 
 
 def insert_default_instruments(target, connection, **kwargs):

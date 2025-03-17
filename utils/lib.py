@@ -16,7 +16,7 @@ async def get_tabulature_by_id(tabulature_id) -> JSONResponse:
     res = {
         "id": tabulature.id,
         "midi_id": tabulature.midi_id,
-        "tabs": tabulature.notes,
+        "tabs": tabulature.notes_id,
         "xml": tabulature.xml
     }
 
@@ -40,3 +40,8 @@ def midi_to_tablature_json(midi_path) -> list[dict[str, Any]]:
 
     print(note_array)
     return note_array
+
+
+async def midi_to_tempo(midi_path) -> int:
+    file = mido.MidiFile(midi_path)
+    return file.ticks_per_beat

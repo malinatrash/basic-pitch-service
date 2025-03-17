@@ -4,6 +4,7 @@ from sqlalchemy import Integer, Column, LargeBinary, JSON
 from sqlalchemy.orm import declarative_base
 
 from models.db import SessionLocal
+from models.track import Track
 
 logger = logging.getLogger(__name__)
 
@@ -38,7 +39,7 @@ class Notes(Base):
         try:
             note = db.query(Notes).filter(Notes.id == id).first()
             if note is not None:
-                note.notes = notes
+                note.notes_id = notes
                 note.tempo = tempo if tempo is not None else note.tempo
                 db.commit()
                 db.refresh(note)

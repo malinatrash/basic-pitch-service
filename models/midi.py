@@ -15,14 +15,15 @@ class MidiFile(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     filename = Column(String, nullable=False)
     data = Column(LargeBinary, nullable=False)
+    file_path = Column(String, nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
     @staticmethod
-    def create(filename, data):
+    def create(filename, data, path=None):
         db = SessionLocal()
         try:
-            midi = MidiFile(filename=filename, data=data)
+            midi = MidiFile(filename=filename, data=data, file_path=path)
             db.add(midi)
             db.commit()
             return midi

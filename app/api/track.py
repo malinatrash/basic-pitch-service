@@ -1,24 +1,37 @@
 from fastapi import APIRouter, HTTPException
 from starlette.responses import JSONResponse
 
-from app.services.track import TrackService
+from models.instruments import Instrument
+from models.track import Track
 
 router = APIRouter(
     prefix="/tracks",
+    tags=["tracks"],
 )
 
 
 @router.get("/id")
 async def get_track(track_id: int):
-    track = TrackService.get_track_by_id(track_id)
+    track = Track.get(track_id)
 
     if track is None:
         raise HTTPException(status_code=404, detail="Track not found")
 
-    return JSONResponse(content=track, status_code=200)
+    instrument = Instrument.get_by_id(track.instrument_id)
+    return JSONResponse(content={
+        "id": track.id,
+        "name": track.name,
+        "instrument": instrument.name
+    }, status_code=200)
 
 
 @router.post("/")
-async def create_track():
+async def create_track(instrument: str, name: str):
+    try:
+        track_id = Track.create(name, instrument)
+    except Exception as e:
+        return JSONResponse(content={"error": str(e)}, status_code=500)
 
-    TrackService.create_track()
+    return JSONResponse(content={
+        "id": track_id,
+    }, status_code=201)
