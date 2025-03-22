@@ -1,47 +1,24 @@
-from typing import Any
-
 import mido
-from fastapi import HTTPException
-from starlette.responses import JSONResponse
 
-from models.notes import Notes
+# Единственная необходимая функция для работы с MIDI файлами
+def get_midi_info(midi_path) -> dict:
+    """Получение информации о MIDI файле"""
+    try:
+        midi_file = mido.MidiFile(midi_path)
+        tempo = midi_file.ticks_per_beat
+        
+        # Подсчет количества нот в файле
+        note_count = 0
+        for track in midi_file.tracks:
+            for msg in track:
+                if msg.type in ['note_on', 'note_off']:
+                    note_count += 1
+        
+        return {
+            "tempo": tempo,
+            "note_count": note_count,
+            "track_count": len(midi_file.tracks)
+        }
+    except Exception as e:
+        return {"error": f"Ошибка при обработке MIDI файла: {str(e)}"}
 
-
-async def get_tabulature_by_id(tabulature_id) -> JSONResponse:
-    tabulature = Notes.get(tabulature_id)
-
-    if tabulature is None:
-        raise HTTPException(status_code=404, detail="Tabulature not found")
-
-    res = {
-        "id": tabulature.id,
-        "midi_id": tabulature.midi_id,
-        "tabs": tabulature.notes_id,
-        "xml": tabulature.xml
-    }
-
-    return JSONResponse(content=res, status_code=200)
-
-
-def midi_to_tablature_json(midi_path) -> list[dict[str, Any]]:
-    file = mido.MidiFile(midi_path)
-
-    note_array = []
-    for msg in file:
-        if msg.type == 'note_on':
-            record = {
-                "note": msg.note,
-                "velocity": msg.velocity,
-                "time": msg.time,
-                "duration": msg.time,
-                "channel": msg.channel,
-            }
-            note_array.append(record)
-
-    print(note_array)
-    return note_array
-
-
-async def midi_to_tempo(midi_path) -> int:
-    file = mido.MidiFile(midi_path)
-    return file.ticks_per_beat
