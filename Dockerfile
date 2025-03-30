@@ -5,13 +5,6 @@ WORKDIR /app
 # Copy project files
 COPY . .
 
-# Install dependencies for audio processing
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    libsndfile1 \
-    ffmpeg \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
-
 # Install project dependencies
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
