@@ -7,7 +7,6 @@ import shutil
 import time
 import sys
 
-# Добавляем путь к корневой директории проекта в sys.path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from utils.audio_to_midi import process_audio

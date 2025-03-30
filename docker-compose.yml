@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  basic-pitch-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8001:8001"
+    volumes:
+      - ./:/app
+    restart: unless-stopped
