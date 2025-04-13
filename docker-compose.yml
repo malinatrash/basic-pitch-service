@@ -10,6 +10,8 @@ services:
     volumes:
       - ./:/app
     restart: unless-stopped
+    networks:
+      - tabify_network
 
 networks:
   tabify_network:
