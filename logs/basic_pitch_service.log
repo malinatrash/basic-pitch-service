@@ -1,0 +1,606 @@
+2025-05-04 17:24:40,213 - basic_pitch_service - INFO - [req_1746379480213] Начало обработки файла: sad.m4a
+2025-05-04 17:24:40,214 - basic_pitch_service - INFO - Starting audio processing for file: /tmp/tmpq0a1vb9n/sad.m4a
+2025-05-04 17:24:40,214 - basic_pitch_service - INFO - Running Basic Pitch conversion
+2025-05-04 17:24:40,777 - basic_pitch_service - ERROR - Error processing audio file: 
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/librosa/core/audio.py", line 176, in load
+    y, sr_native = __soundfile_load(path, offset, duration, dtype)
+  File "/usr/local/lib/python3.10/site-packages/librosa/core/audio.py", line 209, in __soundfile_load
+    context = sf.SoundFile(path)
+  File "/usr/local/lib/python3.10/site-packages/soundfile.py", line 690, in __init__
+    self._file = self._open(file, mode_int, closefd)
+  File "/usr/local/lib/python3.10/site-packages/soundfile.py", line 1265, in _open
+    raise LibsndfileError(err, prefix="Error opening {0!r}: ".format(self.name))
+soundfile.LibsndfileError: Error opening '/tmp/tmpq0a1vb9n/sad.m4a': Format not recognised.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/utils/audio_to_midi.py", line 41, in process_audio
+    basic_pitch([audio_path], dir_midi)
+  File "/app/utils/basic_pitch_process.py", line 12, in basic_pitch
+    predict_and_save(
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 587, in predict_and_save
+    raise e
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 534, in predict_and_save
+    model_output, midi_data, note_events = predict(
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 451, in predict
+    model_output = run_inference(audio_path, model_or_model_path, debug_file)
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 292, in run_inference
+    for audio_windowed, _, audio_original_length in get_audio_input(audio_path, overlap_len, hop_size):
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 229, in get_audio_input
+    audio_original, _ = librosa.load(str(audio_path), sr=AUDIO_SAMPLE_RATE, mono=True)
+  File "/usr/local/lib/python3.10/site-packages/librosa/core/audio.py", line 184, in load
+    y, sr_native = __audioread_load(path, offset, duration, dtype)
+  File "/usr/local/lib/python3.10/site-packages/decorator.py", line 235, in fun
+    return caller(func, *(extras + args), **kw)
+  File "/usr/local/lib/python3.10/site-packages/librosa/util/decorators.py", line 63, in __wrapper
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/librosa/core/audio.py", line 240, in __audioread_load
+    reader = audioread.audio_open(path)
+  File "/usr/local/lib/python3.10/site-packages/audioread/__init__.py", line 132, in audio_open
+    raise NoBackendError()
+audioread.exceptions.NoBackendError
+2025-05-04 17:24:40,777 - basic_pitch_service - ERROR - [req_1746379480213] Ошибка при обработке аудио: Failed to process audio: 
+2025-05-04 17:24:40,777 - basic_pitch_service - ERROR - [req_1746379480213] Критическая ошибка: 500: Failed to process audio: 
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/librosa/core/audio.py", line 176, in load
+    y, sr_native = __soundfile_load(path, offset, duration, dtype)
+  File "/usr/local/lib/python3.10/site-packages/librosa/core/audio.py", line 209, in __soundfile_load
+    context = sf.SoundFile(path)
+  File "/usr/local/lib/python3.10/site-packages/soundfile.py", line 690, in __init__
+    self._file = self._open(file, mode_int, closefd)
+  File "/usr/local/lib/python3.10/site-packages/soundfile.py", line 1265, in _open
+    raise LibsndfileError(err, prefix="Error opening {0!r}: ".format(self.name))
+soundfile.LibsndfileError: Error opening '/tmp/tmpq0a1vb9n/sad.m4a': Format not recognised.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/utils/audio_to_midi.py", line 41, in process_audio
+    basic_pitch([audio_path], dir_midi)
+  File "/app/utils/basic_pitch_process.py", line 12, in basic_pitch
+    predict_and_save(
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 587, in predict_and_save
+    raise e
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 534, in predict_and_save
+    model_output, midi_data, note_events = predict(
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 451, in predict
+    model_output = run_inference(audio_path, model_or_model_path, debug_file)
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 292, in run_inference
+    for audio_windowed, _, audio_original_length in get_audio_input(audio_path, overlap_len, hop_size):
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 229, in get_audio_input
+    audio_original, _ = librosa.load(str(audio_path), sr=AUDIO_SAMPLE_RATE, mono=True)
+  File "/usr/local/lib/python3.10/site-packages/librosa/core/audio.py", line 184, in load
+    y, sr_native = __audioread_load(path, offset, duration, dtype)
+  File "/usr/local/lib/python3.10/site-packages/decorator.py", line 235, in fun
+    return caller(func, *(extras + args), **kw)
+  File "/usr/local/lib/python3.10/site-packages/librosa/util/decorators.py", line 63, in __wrapper
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/librosa/core/audio.py", line 240, in __audioread_load
+    reader = audioread.audio_open(path)
+  File "/usr/local/lib/python3.10/site-packages/audioread/__init__.py", line 132, in audio_open
+    raise NoBackendError()
+audioread.exceptions.NoBackendError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/app/main.py", line 75, in audio_to_midi
+    midi_path = process_audio(temp_file_path)
+  File "/app/utils/audio_to_midi.py", line 53, in process_audio
+    raise AudioProcessingError(f"Failed to process audio: {str(e)}") from e
+utils.audio_to_midi.AudioProcessingError: Failed to process audio: 
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/app/main.py", line 79, in audio_to_midi
+    raise HTTPException(status_code=500, detail=str(e))
+fastapi.exceptions.HTTPException: 500: Failed to process audio: 
+2025-05-04 17:24:51,788 - basic_pitch_service - INFO - [req_1746379491788] Начало обработки файла: sad.m4a
+2025-05-04 17:24:51,788 - basic_pitch_service - INFO - Starting audio processing for file: /tmp/tmpsnr8ex0l/sad.m4a
+2025-05-04 17:24:51,788 - basic_pitch_service - INFO - Running Basic Pitch conversion
+2025-05-04 17:24:52,154 - basic_pitch_service - ERROR - Error processing audio file: 
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/librosa/core/audio.py", line 176, in load
+    y, sr_native = __soundfile_load(path, offset, duration, dtype)
+  File "/usr/local/lib/python3.10/site-packages/librosa/core/audio.py", line 209, in __soundfile_load
+    context = sf.SoundFile(path)
+  File "/usr/local/lib/python3.10/site-packages/soundfile.py", line 690, in __init__
+    self._file = self._open(file, mode_int, closefd)
+  File "/usr/local/lib/python3.10/site-packages/soundfile.py", line 1265, in _open
+    raise LibsndfileError(err, prefix="Error opening {0!r}: ".format(self.name))
+soundfile.LibsndfileError: Error opening '/tmp/tmpsnr8ex0l/sad.m4a': Format not recognised.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/utils/audio_to_midi.py", line 41, in process_audio
+    basic_pitch([audio_path], dir_midi)
+  File "/app/utils/basic_pitch_process.py", line 12, in basic_pitch
+    predict_and_save(
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 587, in predict_and_save
+    raise e
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 534, in predict_and_save
+    model_output, midi_data, note_events = predict(
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 451, in predict
+    model_output = run_inference(audio_path, model_or_model_path, debug_file)
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 292, in run_inference
+    for audio_windowed, _, audio_original_length in get_audio_input(audio_path, overlap_len, hop_size):
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 229, in get_audio_input
+    audio_original, _ = librosa.load(str(audio_path), sr=AUDIO_SAMPLE_RATE, mono=True)
+  File "/usr/local/lib/python3.10/site-packages/librosa/core/audio.py", line 184, in load
+    y, sr_native = __audioread_load(path, offset, duration, dtype)
+  File "/usr/local/lib/python3.10/site-packages/decorator.py", line 235, in fun
+    return caller(func, *(extras + args), **kw)
+  File "/usr/local/lib/python3.10/site-packages/librosa/util/decorators.py", line 63, in __wrapper
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/librosa/core/audio.py", line 240, in __audioread_load
+    reader = audioread.audio_open(path)
+  File "/usr/local/lib/python3.10/site-packages/audioread/__init__.py", line 132, in audio_open
+    raise NoBackendError()
+audioread.exceptions.NoBackendError
+2025-05-04 17:24:52,154 - basic_pitch_service - ERROR - [req_1746379491788] Ошибка при обработке аудио: Failed to process audio: 
+2025-05-04 17:24:52,154 - basic_pitch_service - ERROR - [req_1746379491788] Критическая ошибка: 500: Failed to process audio: 
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/librosa/core/audio.py", line 176, in load
+    y, sr_native = __soundfile_load(path, offset, duration, dtype)
+  File "/usr/local/lib/python3.10/site-packages/librosa/core/audio.py", line 209, in __soundfile_load
+    context = sf.SoundFile(path)
+  File "/usr/local/lib/python3.10/site-packages/soundfile.py", line 690, in __init__
+    self._file = self._open(file, mode_int, closefd)
+  File "/usr/local/lib/python3.10/site-packages/soundfile.py", line 1265, in _open
+    raise LibsndfileError(err, prefix="Error opening {0!r}: ".format(self.name))
+soundfile.LibsndfileError: Error opening '/tmp/tmpsnr8ex0l/sad.m4a': Format not recognised.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/utils/audio_to_midi.py", line 41, in process_audio
+    basic_pitch([audio_path], dir_midi)
+  File "/app/utils/basic_pitch_process.py", line 12, in basic_pitch
+    predict_and_save(
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 587, in predict_and_save
+    raise e
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 534, in predict_and_save
+    model_output, midi_data, note_events = predict(
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 451, in predict
+    model_output = run_inference(audio_path, model_or_model_path, debug_file)
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 292, in run_inference
+    for audio_windowed, _, audio_original_length in get_audio_input(audio_path, overlap_len, hop_size):
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 229, in get_audio_input
+    audio_original, _ = librosa.load(str(audio_path), sr=AUDIO_SAMPLE_RATE, mono=True)
+  File "/usr/local/lib/python3.10/site-packages/librosa/core/audio.py", line 184, in load
+    y, sr_native = __audioread_load(path, offset, duration, dtype)
+  File "/usr/local/lib/python3.10/site-packages/decorator.py", line 235, in fun
+    return caller(func, *(extras + args), **kw)
+  File "/usr/local/lib/python3.10/site-packages/librosa/util/decorators.py", line 63, in __wrapper
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/librosa/core/audio.py", line 240, in __audioread_load
+    reader = audioread.audio_open(path)
+  File "/usr/local/lib/python3.10/site-packages/audioread/__init__.py", line 132, in audio_open
+    raise NoBackendError()
+audioread.exceptions.NoBackendError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/app/main.py", line 75, in audio_to_midi
+    midi_path = process_audio(temp_file_path)
+  File "/app/utils/audio_to_midi.py", line 53, in process_audio
+    raise AudioProcessingError(f"Failed to process audio: {str(e)}") from e
+utils.audio_to_midi.AudioProcessingError: Failed to process audio: 
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/app/main.py", line 79, in audio_to_midi
+    raise HTTPException(status_code=500, detail=str(e))
+fastapi.exceptions.HTTPException: 500: Failed to process audio: 
+2025-05-04 17:24:52,809 - basic_pitch_service - INFO - [req_1746379492809] Начало обработки файла: sad.m4a
+2025-05-04 17:24:52,809 - basic_pitch_service - INFO - Starting audio processing for file: /tmp/tmpyoo_0kmz/sad.m4a
+2025-05-04 17:24:52,809 - basic_pitch_service - INFO - Running Basic Pitch conversion
+2025-05-04 17:24:53,096 - basic_pitch_service - ERROR - Error processing audio file: 
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/librosa/core/audio.py", line 176, in load
+    y, sr_native = __soundfile_load(path, offset, duration, dtype)
+  File "/usr/local/lib/python3.10/site-packages/librosa/core/audio.py", line 209, in __soundfile_load
+    context = sf.SoundFile(path)
+  File "/usr/local/lib/python3.10/site-packages/soundfile.py", line 690, in __init__
+    self._file = self._open(file, mode_int, closefd)
+  File "/usr/local/lib/python3.10/site-packages/soundfile.py", line 1265, in _open
+    raise LibsndfileError(err, prefix="Error opening {0!r}: ".format(self.name))
+soundfile.LibsndfileError: Error opening '/tmp/tmpyoo_0kmz/sad.m4a': Format not recognised.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/utils/audio_to_midi.py", line 41, in process_audio
+    basic_pitch([audio_path], dir_midi)
+  File "/app/utils/basic_pitch_process.py", line 12, in basic_pitch
+    predict_and_save(
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 587, in predict_and_save
+    raise e
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 534, in predict_and_save
+    model_output, midi_data, note_events = predict(
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 451, in predict
+    model_output = run_inference(audio_path, model_or_model_path, debug_file)
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 292, in run_inference
+    for audio_windowed, _, audio_original_length in get_audio_input(audio_path, overlap_len, hop_size):
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 229, in get_audio_input
+    audio_original, _ = librosa.load(str(audio_path), sr=AUDIO_SAMPLE_RATE, mono=True)
+  File "/usr/local/lib/python3.10/site-packages/librosa/core/audio.py", line 184, in load
+    y, sr_native = __audioread_load(path, offset, duration, dtype)
+  File "/usr/local/lib/python3.10/site-packages/decorator.py", line 235, in fun
+    return caller(func, *(extras + args), **kw)
+  File "/usr/local/lib/python3.10/site-packages/librosa/util/decorators.py", line 63, in __wrapper
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/librosa/core/audio.py", line 240, in __audioread_load
+    reader = audioread.audio_open(path)
+  File "/usr/local/lib/python3.10/site-packages/audioread/__init__.py", line 132, in audio_open
+    raise NoBackendError()
+audioread.exceptions.NoBackendError
+2025-05-04 17:24:53,096 - basic_pitch_service - ERROR - [req_1746379492809] Ошибка при обработке аудио: Failed to process audio: 
+2025-05-04 17:24:53,096 - basic_pitch_service - ERROR - [req_1746379492809] Критическая ошибка: 500: Failed to process audio: 
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/librosa/core/audio.py", line 176, in load
+    y, sr_native = __soundfile_load(path, offset, duration, dtype)
+  File "/usr/local/lib/python3.10/site-packages/librosa/core/audio.py", line 209, in __soundfile_load
+    context = sf.SoundFile(path)
+  File "/usr/local/lib/python3.10/site-packages/soundfile.py", line 690, in __init__
+    self._file = self._open(file, mode_int, closefd)
+  File "/usr/local/lib/python3.10/site-packages/soundfile.py", line 1265, in _open
+    raise LibsndfileError(err, prefix="Error opening {0!r}: ".format(self.name))
+soundfile.LibsndfileError: Error opening '/tmp/tmpyoo_0kmz/sad.m4a': Format not recognised.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/utils/audio_to_midi.py", line 41, in process_audio
+    basic_pitch([audio_path], dir_midi)
+  File "/app/utils/basic_pitch_process.py", line 12, in basic_pitch
+    predict_and_save(
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 587, in predict_and_save
+    raise e
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 534, in predict_and_save
+    model_output, midi_data, note_events = predict(
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 451, in predict
+    model_output = run_inference(audio_path, model_or_model_path, debug_file)
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 292, in run_inference
+    for audio_windowed, _, audio_original_length in get_audio_input(audio_path, overlap_len, hop_size):
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 229, in get_audio_input
+    audio_original, _ = librosa.load(str(audio_path), sr=AUDIO_SAMPLE_RATE, mono=True)
+  File "/usr/local/lib/python3.10/site-packages/librosa/core/audio.py", line 184, in load
+    y, sr_native = __audioread_load(path, offset, duration, dtype)
+  File "/usr/local/lib/python3.10/site-packages/decorator.py", line 235, in fun
+    return caller(func, *(extras + args), **kw)
+  File "/usr/local/lib/python3.10/site-packages/librosa/util/decorators.py", line 63, in __wrapper
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/librosa/core/audio.py", line 240, in __audioread_load
+    reader = audioread.audio_open(path)
+  File "/usr/local/lib/python3.10/site-packages/audioread/__init__.py", line 132, in audio_open
+    raise NoBackendError()
+audioread.exceptions.NoBackendError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/app/main.py", line 75, in audio_to_midi
+    midi_path = process_audio(temp_file_path)
+  File "/app/utils/audio_to_midi.py", line 53, in process_audio
+    raise AudioProcessingError(f"Failed to process audio: {str(e)}") from e
+utils.audio_to_midi.AudioProcessingError: Failed to process audio: 
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/app/main.py", line 79, in audio_to_midi
+    raise HTTPException(status_code=500, detail=str(e))
+fastapi.exceptions.HTTPException: 500: Failed to process audio: 
+2025-05-04 17:24:53,509 - basic_pitch_service - INFO - [req_1746379493509] Начало обработки файла: sad.m4a
+2025-05-04 17:24:53,509 - basic_pitch_service - INFO - Starting audio processing for file: /tmp/tmpr9lg6xik/sad.m4a
+2025-05-04 17:24:53,509 - basic_pitch_service - INFO - Running Basic Pitch conversion
+2025-05-04 17:24:53,898 - basic_pitch_service - ERROR - Error processing audio file: 
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/librosa/core/audio.py", line 176, in load
+    y, sr_native = __soundfile_load(path, offset, duration, dtype)
+  File "/usr/local/lib/python3.10/site-packages/librosa/core/audio.py", line 209, in __soundfile_load
+    context = sf.SoundFile(path)
+  File "/usr/local/lib/python3.10/site-packages/soundfile.py", line 690, in __init__
+    self._file = self._open(file, mode_int, closefd)
+  File "/usr/local/lib/python3.10/site-packages/soundfile.py", line 1265, in _open
+    raise LibsndfileError(err, prefix="Error opening {0!r}: ".format(self.name))
+soundfile.LibsndfileError: Error opening '/tmp/tmpr9lg6xik/sad.m4a': Format not recognised.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/utils/audio_to_midi.py", line 41, in process_audio
+    basic_pitch([audio_path], dir_midi)
+  File "/app/utils/basic_pitch_process.py", line 12, in basic_pitch
+    predict_and_save(
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 587, in predict_and_save
+    raise e
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 534, in predict_and_save
+    model_output, midi_data, note_events = predict(
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 451, in predict
+    model_output = run_inference(audio_path, model_or_model_path, debug_file)
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 292, in run_inference
+    for audio_windowed, _, audio_original_length in get_audio_input(audio_path, overlap_len, hop_size):
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 229, in get_audio_input
+    audio_original, _ = librosa.load(str(audio_path), sr=AUDIO_SAMPLE_RATE, mono=True)
+  File "/usr/local/lib/python3.10/site-packages/librosa/core/audio.py", line 184, in load
+    y, sr_native = __audioread_load(path, offset, duration, dtype)
+  File "/usr/local/lib/python3.10/site-packages/decorator.py", line 235, in fun
+    return caller(func, *(extras + args), **kw)
+  File "/usr/local/lib/python3.10/site-packages/librosa/util/decorators.py", line 63, in __wrapper
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/librosa/core/audio.py", line 240, in __audioread_load
+    reader = audioread.audio_open(path)
+  File "/usr/local/lib/python3.10/site-packages/audioread/__init__.py", line 132, in audio_open
+    raise NoBackendError()
+audioread.exceptions.NoBackendError
+2025-05-04 17:24:53,899 - basic_pitch_service - ERROR - [req_1746379493509] Ошибка при обработке аудио: Failed to process audio: 
+2025-05-04 17:24:53,899 - basic_pitch_service - ERROR - [req_1746379493509] Критическая ошибка: 500: Failed to process audio: 
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/librosa/core/audio.py", line 176, in load
+    y, sr_native = __soundfile_load(path, offset, duration, dtype)
+  File "/usr/local/lib/python3.10/site-packages/librosa/core/audio.py", line 209, in __soundfile_load
+    context = sf.SoundFile(path)
+  File "/usr/local/lib/python3.10/site-packages/soundfile.py", line 690, in __init__
+    self._file = self._open(file, mode_int, closefd)
+  File "/usr/local/lib/python3.10/site-packages/soundfile.py", line 1265, in _open
+    raise LibsndfileError(err, prefix="Error opening {0!r}: ".format(self.name))
+soundfile.LibsndfileError: Error opening '/tmp/tmpr9lg6xik/sad.m4a': Format not recognised.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/utils/audio_to_midi.py", line 41, in process_audio
+    basic_pitch([audio_path], dir_midi)
+  File "/app/utils/basic_pitch_process.py", line 12, in basic_pitch
+    predict_and_save(
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 587, in predict_and_save
+    raise e
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 534, in predict_and_save
+    model_output, midi_data, note_events = predict(
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 451, in predict
+    model_output = run_inference(audio_path, model_or_model_path, debug_file)
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 292, in run_inference
+    for audio_windowed, _, audio_original_length in get_audio_input(audio_path, overlap_len, hop_size):
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 229, in get_audio_input
+    audio_original, _ = librosa.load(str(audio_path), sr=AUDIO_SAMPLE_RATE, mono=True)
+  File "/usr/local/lib/python3.10/site-packages/librosa/core/audio.py", line 184, in load
+    y, sr_native = __audioread_load(path, offset, duration, dtype)
+  File "/usr/local/lib/python3.10/site-packages/decorator.py", line 235, in fun
+    return caller(func, *(extras + args), **kw)
+  File "/usr/local/lib/python3.10/site-packages/librosa/util/decorators.py", line 63, in __wrapper
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/librosa/core/audio.py", line 240, in __audioread_load
+    reader = audioread.audio_open(path)
+  File "/usr/local/lib/python3.10/site-packages/audioread/__init__.py", line 132, in audio_open
+    raise NoBackendError()
+audioread.exceptions.NoBackendError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/app/main.py", line 75, in audio_to_midi
+    midi_path = process_audio(temp_file_path)
+  File "/app/utils/audio_to_midi.py", line 53, in process_audio
+    raise AudioProcessingError(f"Failed to process audio: {str(e)}") from e
+utils.audio_to_midi.AudioProcessingError: Failed to process audio: 
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/app/main.py", line 79, in audio_to_midi
+    raise HTTPException(status_code=500, detail=str(e))
+fastapi.exceptions.HTTPException: 500: Failed to process audio: 
+2025-05-04 17:24:54,478 - basic_pitch_service - INFO - [req_1746379494478] Начало обработки файла: sad.m4a
+2025-05-04 17:24:54,479 - basic_pitch_service - INFO - Starting audio processing for file: /tmp/tmpaqk4ptm9/sad.m4a
+2025-05-04 17:24:54,479 - basic_pitch_service - INFO - Running Basic Pitch conversion
+2025-05-04 17:24:54,755 - basic_pitch_service - ERROR - Error processing audio file: 
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/librosa/core/audio.py", line 176, in load
+    y, sr_native = __soundfile_load(path, offset, duration, dtype)
+  File "/usr/local/lib/python3.10/site-packages/librosa/core/audio.py", line 209, in __soundfile_load
+    context = sf.SoundFile(path)
+  File "/usr/local/lib/python3.10/site-packages/soundfile.py", line 690, in __init__
+    self._file = self._open(file, mode_int, closefd)
+  File "/usr/local/lib/python3.10/site-packages/soundfile.py", line 1265, in _open
+    raise LibsndfileError(err, prefix="Error opening {0!r}: ".format(self.name))
+soundfile.LibsndfileError: Error opening '/tmp/tmpaqk4ptm9/sad.m4a': Format not recognised.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/utils/audio_to_midi.py", line 41, in process_audio
+    basic_pitch([audio_path], dir_midi)
+  File "/app/utils/basic_pitch_process.py", line 12, in basic_pitch
+    predict_and_save(
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 587, in predict_and_save
+    raise e
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 534, in predict_and_save
+    model_output, midi_data, note_events = predict(
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 451, in predict
+    model_output = run_inference(audio_path, model_or_model_path, debug_file)
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 292, in run_inference
+    for audio_windowed, _, audio_original_length in get_audio_input(audio_path, overlap_len, hop_size):
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 229, in get_audio_input
+    audio_original, _ = librosa.load(str(audio_path), sr=AUDIO_SAMPLE_RATE, mono=True)
+  File "/usr/local/lib/python3.10/site-packages/librosa/core/audio.py", line 184, in load
+    y, sr_native = __audioread_load(path, offset, duration, dtype)
+  File "/usr/local/lib/python3.10/site-packages/decorator.py", line 235, in fun
+    return caller(func, *(extras + args), **kw)
+  File "/usr/local/lib/python3.10/site-packages/librosa/util/decorators.py", line 63, in __wrapper
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/librosa/core/audio.py", line 240, in __audioread_load
+    reader = audioread.audio_open(path)
+  File "/usr/local/lib/python3.10/site-packages/audioread/__init__.py", line 132, in audio_open
+    raise NoBackendError()
+audioread.exceptions.NoBackendError
+2025-05-04 17:24:54,755 - basic_pitch_service - ERROR - [req_1746379494478] Ошибка при обработке аудио: Failed to process audio: 
+2025-05-04 17:24:54,755 - basic_pitch_service - ERROR - [req_1746379494478] Критическая ошибка: 500: Failed to process audio: 
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/librosa/core/audio.py", line 176, in load
+    y, sr_native = __soundfile_load(path, offset, duration, dtype)
+  File "/usr/local/lib/python3.10/site-packages/librosa/core/audio.py", line 209, in __soundfile_load
+    context = sf.SoundFile(path)
+  File "/usr/local/lib/python3.10/site-packages/soundfile.py", line 690, in __init__
+    self._file = self._open(file, mode_int, closefd)
+  File "/usr/local/lib/python3.10/site-packages/soundfile.py", line 1265, in _open
+    raise LibsndfileError(err, prefix="Error opening {0!r}: ".format(self.name))
+soundfile.LibsndfileError: Error opening '/tmp/tmpaqk4ptm9/sad.m4a': Format not recognised.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/utils/audio_to_midi.py", line 41, in process_audio
+    basic_pitch([audio_path], dir_midi)
+  File "/app/utils/basic_pitch_process.py", line 12, in basic_pitch
+    predict_and_save(
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 587, in predict_and_save
+    raise e
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 534, in predict_and_save
+    model_output, midi_data, note_events = predict(
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 451, in predict
+    model_output = run_inference(audio_path, model_or_model_path, debug_file)
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 292, in run_inference
+    for audio_windowed, _, audio_original_length in get_audio_input(audio_path, overlap_len, hop_size):
+  File "/usr/local/lib/python3.10/site-packages/basic_pitch/inference.py", line 229, in get_audio_input
+    audio_original, _ = librosa.load(str(audio_path), sr=AUDIO_SAMPLE_RATE, mono=True)
+  File "/usr/local/lib/python3.10/site-packages/librosa/core/audio.py", line 184, in load
+    y, sr_native = __audioread_load(path, offset, duration, dtype)
+  File "/usr/local/lib/python3.10/site-packages/decorator.py", line 235, in fun
+    return caller(func, *(extras + args), **kw)
+  File "/usr/local/lib/python3.10/site-packages/librosa/util/decorators.py", line 63, in __wrapper
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/librosa/core/audio.py", line 240, in __audioread_load
+    reader = audioread.audio_open(path)
+  File "/usr/local/lib/python3.10/site-packages/audioread/__init__.py", line 132, in audio_open
+    raise NoBackendError()
+audioread.exceptions.NoBackendError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/app/main.py", line 75, in audio_to_midi
+    midi_path = process_audio(temp_file_path)
+  File "/app/utils/audio_to_midi.py", line 53, in process_audio
+    raise AudioProcessingError(f"Failed to process audio: {str(e)}") from e
+utils.audio_to_midi.AudioProcessingError: Failed to process audio: 
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/app/main.py", line 79, in audio_to_midi
+    raise HTTPException(status_code=500, detail=str(e))
+fastapi.exceptions.HTTPException: 500: Failed to process audio: 
+2025-05-04 17:27:55,811 - basic_pitch_service - INFO - [req_1746379675811] Начало обработки файла: sad.m4a
+2025-05-04 17:27:55,812 - basic_pitch_service - INFO - Starting audio processing for file: /tmp/tmp_3pyplg4/sad.m4a
+2025-05-04 17:27:55,812 - basic_pitch_service - INFO - Converting .m4a to WAV format
+2025-05-04 17:27:55,813 - basic_pitch_service - ERROR - [req_1746379675811] Ошибка при обработке аудио: Conversion error: [Errno 2] No such file or directory: 'ffmpeg'
+2025-05-04 17:27:55,813 - basic_pitch_service - ERROR - [req_1746379675811] Критическая ошибка: 500: Conversion error: [Errno 2] No such file or directory: 'ffmpeg'
+Traceback (most recent call last):
+  File "/app/utils/audio_to_midi.py", line 31, in convert_to_wav
+    process = subprocess.run(cmd, capture_output=True, text=True)
+  File "/usr/local/lib/python3.10/subprocess.py", line 503, in run
+    with Popen(*popenargs, **kwargs) as process:
+  File "/usr/local/lib/python3.10/subprocess.py", line 971, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/local/lib/python3.10/subprocess.py", line 1863, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'ffmpeg'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/app/main.py", line 75, in audio_to_midi
+    midi_path = process_audio(temp_file_path)
+  File "/app/utils/audio_to_midi.py", line 65, in process_audio
+    wav_path = convert_to_wav(audio_path)
+  File "/app/utils/audio_to_midi.py", line 38, in convert_to_wav
+    raise AudioProcessingError(f"Conversion error: {str(e)}")
+utils.audio_to_midi.AudioProcessingError: Conversion error: [Errno 2] No such file or directory: 'ffmpeg'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/app/main.py", line 79, in audio_to_midi
+    raise HTTPException(status_code=500, detail=str(e))
+fastapi.exceptions.HTTPException: 500: Conversion error: [Errno 2] No such file or directory: 'ffmpeg'
+2025-05-04 17:27:59,240 - basic_pitch_service - INFO - [req_1746379679240] Начало обработки файла: sad.m4a
+2025-05-04 17:27:59,240 - basic_pitch_service - INFO - Starting audio processing for file: /tmp/tmpqzeh5485/sad.m4a
+2025-05-04 17:27:59,240 - basic_pitch_service - INFO - Converting .m4a to WAV format
+2025-05-04 17:27:59,241 - basic_pitch_service - ERROR - [req_1746379679240] Ошибка при обработке аудио: Conversion error: [Errno 2] No such file or directory: 'ffmpeg'
+2025-05-04 17:27:59,241 - basic_pitch_service - ERROR - [req_1746379679240] Критическая ошибка: 500: Conversion error: [Errno 2] No such file or directory: 'ffmpeg'
+Traceback (most recent call last):
+  File "/app/utils/audio_to_midi.py", line 31, in convert_to_wav
+    process = subprocess.run(cmd, capture_output=True, text=True)
+  File "/usr/local/lib/python3.10/subprocess.py", line 503, in run
+    with Popen(*popenargs, **kwargs) as process:
+  File "/usr/local/lib/python3.10/subprocess.py", line 971, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/local/lib/python3.10/subprocess.py", line 1863, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'ffmpeg'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/app/main.py", line 75, in audio_to_midi
+    midi_path = process_audio(temp_file_path)
+  File "/app/utils/audio_to_midi.py", line 65, in process_audio
+    wav_path = convert_to_wav(audio_path)
+  File "/app/utils/audio_to_midi.py", line 38, in convert_to_wav
+    raise AudioProcessingError(f"Conversion error: {str(e)}")
+utils.audio_to_midi.AudioProcessingError: Conversion error: [Errno 2] No such file or directory: 'ffmpeg'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/app/main.py", line 79, in audio_to_midi
+    raise HTTPException(status_code=500, detail=str(e))
+fastapi.exceptions.HTTPException: 500: Conversion error: [Errno 2] No such file or directory: 'ffmpeg'
+2025-05-04 17:28:01,793 - basic_pitch_service - INFO - [req_1746379681793] Начало обработки файла: sad.m4a
+2025-05-04 17:28:01,793 - basic_pitch_service - INFO - Starting audio processing for file: /tmp/tmpn6j1t4ek/sad.m4a
+2025-05-04 17:28:01,793 - basic_pitch_service - INFO - Converting .m4a to WAV format
+2025-05-04 17:28:01,794 - basic_pitch_service - ERROR - [req_1746379681793] Ошибка при обработке аудио: Conversion error: [Errno 2] No such file or directory: 'ffmpeg'
+2025-05-04 17:28:01,794 - basic_pitch_service - ERROR - [req_1746379681793] Критическая ошибка: 500: Conversion error: [Errno 2] No such file or directory: 'ffmpeg'
+Traceback (most recent call last):
+  File "/app/utils/audio_to_midi.py", line 31, in convert_to_wav
+    process = subprocess.run(cmd, capture_output=True, text=True)
+  File "/usr/local/lib/python3.10/subprocess.py", line 503, in run
+    with Popen(*popenargs, **kwargs) as process:
+  File "/usr/local/lib/python3.10/subprocess.py", line 971, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/local/lib/python3.10/subprocess.py", line 1863, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'ffmpeg'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/app/main.py", line 75, in audio_to_midi
+    midi_path = process_audio(temp_file_path)
+  File "/app/utils/audio_to_midi.py", line 65, in process_audio
+    wav_path = convert_to_wav(audio_path)
+  File "/app/utils/audio_to_midi.py", line 38, in convert_to_wav
+    raise AudioProcessingError(f"Conversion error: {str(e)}")
+utils.audio_to_midi.AudioProcessingError: Conversion error: [Errno 2] No such file or directory: 'ffmpeg'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/app/main.py", line 79, in audio_to_midi
+    raise HTTPException(status_code=500, detail=str(e))
+fastapi.exceptions.HTTPException: 500: Conversion error: [Errno 2] No such file or directory: 'ffmpeg'
+2025-05-04 17:33:12,524 - basic_pitch_service - INFO - [req_1746379992524] Начало обработки файла: sad.m4a
+2025-05-04 17:33:12,525 - basic_pitch_service - INFO - Starting audio processing for file: /tmp/tmptgmt7ulu/sad.m4a
+2025-05-04 17:33:12,525 - basic_pitch_service - INFO - Converting .m4a to WAV format
+2025-05-04 17:33:12,619 - basic_pitch_service - INFO - Running Basic Pitch conversion
+2025-05-04 17:33:17,435 - basic_pitch_service - INFO - Successfully generated MIDI file: /root/ez-tabz/midi/sad/sad_basic_pitch.mid
+2025-05-04 17:33:17,436 - basic_pitch_service - INFO - [req_1746379992524] MIDI файл успешно создан: /root/ez-tabz/midi/sad/sad_basic_pitch.mid
+2025-05-04 17:33:17,441 - basic_pitch_service - INFO - [req_1746379992524] Обработка завершена за 4.92 секунд. Создан MIDI с 214 нотами.
